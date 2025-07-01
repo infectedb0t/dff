@@ -1,0 +1,450 @@
+:root {
+    --text-color: #ffffff;
+    --desc-text: #d3b3e5;
+    --btn-color: #d3b3e5;
+    --overlay-bg: rgba(0, 0, 0, 0.7);
+    --btn-hover-bg: rgba(211, 179, 229, 0.2);
+    --btn-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    --btn-hover-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+    --popup-bg: rgba(0, 0, 0, 0.95);
+    --popup-border: #d3b3e5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-family: 'Unbounded', sans-serif;
+    background-color: #111;
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    color: var(--text-color);
+    /* Добавлено равномерное затемнение для фоновой картинки (уменьшена прозрачность до 0.3) */
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('images/kurumi_background.png') center/cover fixed no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* Добавлена анимация смены фона */
+    transition: background 1s ease-in-out;
+}
+
+#persistent-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--overlay-bg);
+    z-index: 1;
+}
+
+#splash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: opacity 2s ease;
+    /* Добавлено равномерное затемнение для фонового изображения сплэш-экрана (уменьшена прозрачность до 0.3) */
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('images/kurumi_splash.png') center/cover no-repeat;
+    /* Добавлена анимация смены фона */
+    transition: background 1s ease-in-out, opacity 2s ease;
+}
+
+#splash h1 {
+    position: relative;
+    z-index: 1;
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 900;
+    color: var(--desc-text);
+    font-size: clamp(1.5rem, 8vw, 3rem);
+    text-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+    padding: 0 1rem;
+    text-align: center;
+    text-rendering: optimizeLegibility;
+    animation: splashPopUp 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    opacity: 0;
+}
+
+#splash h1 span {
+    opacity: 1;
+    transition: none;
+}
+
+.fade-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--overlay-bg);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    z-index: 9;
+}
+
+.fade-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.content-section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 2;
+}
+
+.content-section.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    color: var(--text-color);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#main-content .container {
+    min-height: 100vh;
+}
+
+h1.main-title {
+    font-weight: 900;
+    font-family: 'Unbounded', sans-serif;
+    font-size: clamp(1.75rem, 6vw, 2.5rem);
+    color: var(--desc-text);
+    margin-bottom: 1rem;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
+    white-space: pre;
+    min-width: clamp(10rem, 30vw, 15rem);
+    display: inline-block;
+    text-align: center;
+    height: 3rem;
+    line-height: 1.2;
+}
+
+h1.main-title span {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.description {
+    font-weight: 400;
+    font-family: 'Unbounded', sans-serif;
+    font-size: 1.3rem;
+    max-width: 600px;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    color: var(--desc-text);
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    word-wrap: break-word;
+    padding: 0 15px;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    opacity: 0;
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    z-index: 1;
+    padding-bottom: 0;
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: 2px solid var(--btn-color);
+    color: var(--btn-color);
+    text-decoration: none;
+    font-weight: 900;
+    font-family: 'Unbounded', sans-serif;
+    text-transform: uppercase;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s, color 0.3s;
+    border-radius: 5px;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    box-shadow: var(--btn-shadow);
+    cursor: pointer;
+    text-align: center;
+    font-size: 0.9rem;
+    background-color: transparent;
+}
+
+.btn:hover {
+    background: var(--btn-color);
+    color: #111;
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: var(--btn-hover-shadow);
+}
+
+.btn:active {
+    transform: translateY(-2px) scale(0.98);
+}
+
+#bots-content .container {
+    width: 100%;
+    max-width: 900px;
+    background: var(--popup-bg);
+    border: 1px solid var(--popup-border);
+    border-radius: 8px;
+    box-shadow: var(--btn-hover-shadow);
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 25px;
+}
+
+#bots-content h1 {
+    font-weight: 900;
+    font-family: 'Unbounded', sans-serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--btn-color);
+    margin-bottom: 30px;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
+}
+
+.bot-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.bot-card {
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 1px solid var(--btn-color);
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+    box-shadow: var(--btn-shadow);
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.bot-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: var(--btn-hover-shadow);
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+.bot-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid var(--btn-color);
+}
+
+.bot-card h2 {
+    font-family: 'Russo One', sans-serif;
+    color: var(--desc-text);
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+}
+
+.bot-card p {
+    font-family: 'Unbounded', sans-serif;
+    color: var(--text-color);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+
+.bot-card a.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid var(--btn-color);
+    color: var(--btn-color);
+    text-decoration: none;
+    font-weight: 900;
+    font-family: 'Unbounded', sans-serif;
+    text-transform: uppercase;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s, color 0.3s;
+    border-radius: 5px;
+    letter-spacing: 0.05em;
+    box-shadow: var(--btn-shadow);
+    background-color: transparent;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.bot-card a.btn:hover {
+    background: var(--btn-color);
+    color: #111;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: var(--btn-hover-shadow);
+}
+
+.back-button {
+    margin-top: 40px;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.back-button a.btn {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(80px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInSlideUpContainer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInSlideUpCard {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes splashPopUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (max-width:768px) {
+    #main-content .description {
+        font-size: 1rem;
+        max-width: 90%;
+        padding: 0 10px;
+    }
+
+    #main-content .btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+    }
+
+    #main-content .buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #main-content .btn {
+        width: 85%;
+        max-width: 280px;
+    }
+
+    #bots-content .container {
+        padding: 20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    #bots-content h1 {
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+    }
+
+    .bot-list {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .bot-card {
+        padding: 15px;
+    }
+
+    .bot-card h2 {
+        font-size: 1.4rem;
+    }
+
+    .bot-card p {
+        font-size: 0.9rem;
+    }
+
+    .bot-card a.btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+    }
+}
