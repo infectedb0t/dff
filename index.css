@@ -447,4 +447,8 @@ h1.main-title span {
         padding: 0.6rem 1.2rem;
         font-size: 0.85rem;
     }
+
+    #splash h1 {
+        font-size: clamp(0.3rem, 4vw, 1.8rem);
+    }
 }
