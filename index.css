@@ -29,8 +29,7 @@ body {
     color: var(--text-color);
     /* Добавлено равномерное затемнение для фоновой картинки (уменьшена прозрачность до 0.3) */
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('images/kurumi_background.png') center/cover fixed no-repeat;
-    background-size: auto;
-    background-repeat: no-repeat;
+    background-size: cover;
     background-position: center;
     background-attachment: fixed;
     display: flex;
