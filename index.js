@@ -21,16 +21,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const botsData = [
         { "id": 1, "name": "BOT1", "description": "Краткое, но ёмкое описание первого бота. Что он делает, какие задачи решает, и почему он будет полезен пользователю. Здесь можно добавить 1-2 предложения.", "link": "https://t.me/telegram_bot_1" },
         { "id": 2, "name": "BOT2", "description": "Описание второго бота, его функционал и ключевые особенности. Постарайтесь кратко и понятно изложить суть, чтобы пользователь сразу понял ценность.", "link": "https://t.me/telegram_bot_2" },
-        { "id": 3, "name": "BOT3", "description": "Текст с описанием третьего бота. Расскажите, чем он отличается от других, какие у него уникальные возможности или для какой аудитории он предназначен.", "link": "https://t.me/telegram_bot_3" },
-        { "id": 4, "name": "BOT4", "description": "Описание четвертого бота.", "link": "https://t.me/telegram_bot_4" },
-        { "id": 5, "name": "BOT5", "description": "Описание пятого бота.", "link": "https://t.me/telegram_bot_5" },
-        { "id": 6, "name": "BOT6", "description": "Описание шестого бота.", "link": "https://t.me/telegram_bot_6" },
-        { "id": 7, "name": "BOT7", "description": "Описание седьмого бота.", "link": "https://t.me/telegram_bot_7" },
-        { "id": 8, "name": "BOT8", "description": "Описание восьмого бота.", "link": "https://t.me/telegram_bot_8" },
-        { "id": 9, "name": "BOT9", "description": "Описание девятого бота.", "link": "https://t.me/telegram_bot_9" },
-        { "id": 10, "name": "BOT10", "description": "Описание десятого бота.", "link": "https://t.me/telegram_bot_10" },
-        { "id": 11, "name": "BOT11", "description": "Описание одиннадцатого бота.", "link": "https://t.me/telegram_bot_11" },
-        { "id": 12, "name": "BOT12", "description": "Описание двенадцатого бота.", "link": "https://t.me/telegram_bot_12" }
+        // { "id": 3, "name": "BOT3", "description": "Текст с описанием третьего бота. Расскажите, чем он отличается от других, какие у него уникальные возможности или для какой аудитории он предназначен.", "link": "https://t.me/telegram_bot_3" },
+        // { "id": 4, "name": "BOT4", "description": "Описание четвертого бота.", "link": "https://t.me/telegram_bot_4" },
+        // { "id": 5, "name": "BOT5", "description": "Описание пятого бота.", "link": "https://t.me/telegram_bot_5" },
+        // { "id": 6, "name": "BOT6", "description": "Описание шестого бота.", "link": "https://t.me/telegram_bot_6" },
+        // { "id": 7, "name": "BOT7", "description": "Описание седьмого бота.", "link": "https://t.me/telegram_bot_7" },
+        // { "id": 8, "name": "BOT8", "description": "Описание восьмого бота.", "link": "https://t.me/telegram_bot_8" },
+        // { "id": 9, "name": "BOT9", "description": "Описание девятого бота.", "link": "https://t.me/telegram_bot_9" },
+        // { "id": 10, "name": "BOT10", "description": "Описание десятого бота.", "link": "https://t.me/telegram_bot_10" },
+        // { "id": 11, "name": "BOT11", "description": "Описание одиннадцатого бота.", "link": "https://t.me/telegram_bot_11" },
+        // { "id": 12, "name": "BOT12", "description": "Описание двенадцатого бота.", "link": "https://t.me/telegram_bot_12" }
     ];
 
     const greetings = ['Привет!'];
