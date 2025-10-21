@@ -19,8 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
     * ====================================================================
     */
     const botsData = [
-        { "id": 1, "name": "BOT1", "description": "Краткое, но ёмкое описание первого бота. Что он делает, какие задачи решает, и почему он будет полезен пользователю. Здесь можно добавить 1-2 предложения.", "link": "https://t.me/telegram_bot_1" },
-        { "id": 2, "name": "BOT2", "description": "Описание второго бота, его функционал и ключевые особенности. Постарайтесь кратко и понятно изложить суть, чтобы пользователь сразу понял ценность.", "link": "https://t.me/telegram_bot_2" }
+        { "id": 1, "name": "скоро юз будет", "description": "Бот-модератор чата. Следит за порядком, удаляет спам и оскорбления, предупреждает нарушителей и может выдавать мут. Поддерживает дружелюбную атмосферу и помогает администраторам управлять сообществом.Я предпочитаю этот ответ, "link": "https://t.me/telegram_bot_1" },
+        //{ "id": 2, "name": "BOT2", "description": "Описание второго бота, его функционал и ключевые особенности. Постарайтесь кратко и понятно изложить суть, чтобы пользователь сразу понял ценность.", "link": "https://t.me/telegram_bot_2" }
         // { "id": 3, "name": "BOT3", "description": "Текст с описанием третьего бота. Расскажите, чем он отличается от других, какие у него уникальные возможности или для какой аудитории он предназначен.", "link": "https://t.me/telegram_bot_3" },
         // { "id": 4, "name": "BOT4", "description": "Описание четвертого бота.", "link": "https://t.me/telegram_bot_4" },
         // { "id": 5, "name": "BOT5", "description": "Описание пятого бота.", "link": "https://t.me/telegram_bot_5" },
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     const greetings = ['Привет!'];
-    const splashText = "Добро пожаловать в мир MrxZed"
+    const splashText = "Добро пожаловать в мир infectedcore"
     let currentGreetingIndex = 0;
     const typingSpeed = 70;
     const erasingSpeed = 40;
@@ -229,3 +229,4 @@ document.addEventListener('DOMContentLoaded', () => {
         showSection(mainContent, botsContent);
     });
 });
+
