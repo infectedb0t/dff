@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     * ====================================================================
     */
     const botsData = [
-        { "id": 1, "name": "скоро будет юз", "description": "Бот-модератор: следит за порядком, удаляет спам и нарушителей.", "link": "https://t.me/telegram_bot_1" },
+        { "id": 1, "name": "CheckSearch", "description": "Бот проверяет ссылку и показывает инфу со скрином.", "link": "https://t.me/telegram_bot_1" },
         //{ "id": 2, "name": "BOT2", "description": "Описание второго бота, его функционал и ключевые особенности. Постарайтесь кратко и понятно изложить суть, чтобы пользователь сразу понял ценность.", "link": "https://t.me/telegram_bot_2" },
        // { "id": 3, "name": "BOT3", "description": "Текст с описанием третьего бота. Расскажите, чем он отличается от других, какие у него уникальные возможности или для какой аудитории он предназначен.", "link": "https://t.me/telegram_bot_3" },
        // { "id": 4, "name": "BOT4", "description": "Описание четвертого бота.", "link": "https://t.me/telegram_bot_4" },
@@ -230,3 +230,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
