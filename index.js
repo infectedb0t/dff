@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     const greetings = ['Привет!'];
-    const splashText = "Добро пожаловать в мир infectedcore"
+    const splashText = "Добро пожаловать!"
     let currentGreetingIndex = 0;
     const typingSpeed = 70;
     const erasingSpeed = 40;
@@ -228,4 +228,5 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault();
         showSection(mainContent, botsContent);
     });
+
 });
