@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
       //  { "id": 12, "name": "BOT12", "description": "Описание двенадцатого бота.", "link": "https://t.me/telegram_bot_12" }
     ];
 
-    const greetings = ['Привет!'];
+    const greetings = ['Welcome!'];
     const splashText = "Добро пожаловать!"
     let currentGreetingIndex = 0;
     const typingSpeed = 70;
