@@ -225,9 +225,7 @@ h1.main-title span {
 #bots-content .container {
     width: 100%;
     max-width: 900px;
-    background: var(--popup-bg);
-    border: 1px solid var(--popup-border);
-    border-radius: 8px;
+    background: rgba(0, 0, 0, 0);
     box-shadow: var(--btn-hover-shadow);
     margin-top: 50px;
     margin-bottom: 50px;
@@ -252,9 +250,9 @@ h1.main-title span {
 }
 
 .bot-card {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0);
     border: 1px solid var(--btn-color);
-    border-radius: 8px;
+    border-radius: 16px;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -269,7 +267,7 @@ h1.main-title span {
 .bot-card:hover {
     transform: translateY(-5px) scale(1.02);
     box-shadow: var(--btn-hover-shadow);
-    background-color: rgba(0, 0, 0, 0.85);
+    background-color: rgba(0, 0, 0, 0);
 }
 
 .bot-card img {
@@ -419,6 +417,7 @@ h1.main-title span {
         padding: 20px;
         margin-top: 20px;
         margin-bottom: 20px;
+        opacity: 0;
     }
 
     #bots-content h1 {
